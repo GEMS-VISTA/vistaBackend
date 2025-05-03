@@ -25,8 +25,14 @@ SECRET_KEY = 'django-insecure-w_&p7$%xb*n&$1@riw8qyvjjak5^*ws4&*st^upt*v11bxc*68
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*'] # * is ok for development, use something like ALLOWED_HOSTS = ['18.189.145.253', 'localhost', '127.0.0.1'] for prod
+ALLOWED_HOSTS = ['18.189.145.253', 'localhost', '127.0.0.1'] # * is ok for development, use something like ALLOWED_HOSTS = ['18.189.145.253', 'localhost', '127.0.0.1'] for prod
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://18.189.145.253',
+    'https://main.dbxg81bzilvbr.amplifyapp.com',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
