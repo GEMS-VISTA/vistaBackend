@@ -8,4 +8,4 @@ reload = True
 accesslog = errorlog = "/var/log/gunicorn/dev.log"
 capture_output = True
 pidfile = "/var/run/gunicorn/dev.pid"
-# daemon = True
+daemon = True
