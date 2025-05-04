@@ -61,7 +61,12 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True #For REST and CORS
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = [
+    "https://main.dbxg81bzilvbr.amplifyapp.com",
+]
+
+
 
 ASGI_APPLICATION = 'vistaBackend.asgi.application' #For ASGI handling
 
