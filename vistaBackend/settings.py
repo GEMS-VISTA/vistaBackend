@@ -65,6 +65,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "https://main.dbxg81bzilvbr.amplifyapp.com",
+    "http://localhost:5173",
 ]
 
 
