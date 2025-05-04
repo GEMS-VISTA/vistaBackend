@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-w_&p7$%xb*n&$1@riw8qyvjjak5^*ws4&*st^upt*v11bxc*68
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.189.145.253', 'localhost', '127.0.0.1'] # * is ok for development, use something like ALLOWED_HOSTS = ['18.189.145.253', 'localhost', '127.0.0.1'] for prod
+ALLOWED_HOSTS = ['18.189.145.253', 'localhost', '127.0.0.1', 'vista-server.ddns.net']
+ # * is ok for development, use something like ALLOWED_HOSTS = ['18.189.145.253', 'localhost', '127.0.0.1'] for prod
 
 CSRF_TRUSTED_ORIGINS = [
     'https://18.189.145.253',
@@ -52,13 +53,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # move this up!
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
