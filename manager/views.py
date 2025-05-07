@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 import serial
 import requests
 
-BRIDGE_URL = "http://172.24.192.1:5000"  # or https://<ngrok-url> if using ngrok
+BRIDGE_URL =  "https://b859-129-2-89-208.ngrok-free.app" # or https://<ngrok-url> if using ngrok
 
 @api_view(['POST'])
 def led_on(request):
