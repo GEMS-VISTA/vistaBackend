@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from manager.views import led_on, led_off
-from camera.views import vid_feed
+from camera.views import forward_camera_feed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,5 @@ urlpatterns = [
     path('api/led/off/', led_off),
 
     #Camera backend
-    path('vid_feed/', vid_feed, name = 'video_feed')
+    path('vid_feed/', forward_camera_feed, name = 'video_feed')
 ]
