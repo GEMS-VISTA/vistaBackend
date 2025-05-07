@@ -1,19 +1,15 @@
 from django.shortcuts import render
 import cv2
-from django.http import StreamingHttpResponse
+from django.http import StreamingHttpResponse, HttpResponse
+import requests
 
-camera = cv2.VideoCapture(1)
+NGROK_CAMERA_URL = " https://dfe6-129-2-89-208.ngrok-free.app"
 
-def create_frames():
-    while True:
-        success, frame = camera.read() #success is a boolean that gives you info on if the camera successfully captured a frame
-        if not success:                #image captured from the camera
-            break
-        _, buffer = cv2.imencode('.jpg', frame) #JPEG encoded image stored in memeory (will be sent to the React UI)
-        frame = buffer.tobytes()
-        yield (b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-        #yield is preferred over return because it keeps the function alive while return data, unlike basic return
-
-def vid_feed(request):
-    return StreamingHttpResponse(create_frames(), content_type = 'multipart/x-mixed-replace; boundary=frame')
-        #content_type tells the browser that the feed is a live video stream
+def forward_camera_feed(request):
+    try:
+        stream = requests.get(NGROK_CAMERA_URL, stream=True, timeout=5)
+        return StreamingHttpResponse(stream.iter_content(chunk_size=1024),
+                                     content_type=stream.headers['Content-Type'])
+    except Exception as e:
+        print(f"Camera stream error: {e}")
+        return HttpResponse("Camera unavailable", status=503)
