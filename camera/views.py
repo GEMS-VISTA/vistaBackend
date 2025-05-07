@@ -3,7 +3,7 @@ import cv2
 from django.http import StreamingHttpResponse, HttpResponse
 import requests
 
-NGROK_CAMERA_URL = " https://dfe6-129-2-89-208.ngrok-free.app/vid_feed"
+NGROK_CAMERA_URL = " https://9bb9-129-2-89-208.ngrok-free.app/vid_feed"
 
 def forward_camera_feed(request):
     try:
